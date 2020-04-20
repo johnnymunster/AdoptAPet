@@ -19,14 +19,16 @@ router.get("/", function(req, res){
 //CREATE - adding a pet to the DB
 router.post("/", middleware.isLoggedIn, function(req, res){
     var name = req.body.name;
-    var price = req.body.price;
+    var type = req.body.type;
     var image = req.body.image;
-    var desc = req.body.description;
+    var description = req.body.description;
+    var location = req.body.location;
     var author = {
         id: req.user._id,
         username: req.user.username
     }
-    var newPet = {name: name, price: price, image: image, description: desc, author:author}
+    var newPet = {name: name, image: image, description: description, location: location, author:author}
+
     Pet.create(newPet, function(err, newlyCreated){
         if(err){
             console.log(err);

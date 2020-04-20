@@ -13,6 +13,16 @@ router.get("/register", function(req, res){
    res.render("register"); 
 });
 
+// show contact page
+router.get("/contact", function (req, res) {
+    res.render("contact");
+});
+
+// show about page
+router.get("/about", function (req, res) {
+    res.render("about");
+});
+
 //handle sign up logic
 router.post("/register", function(req, res){
     var newUser = new User({username: req.body.username});

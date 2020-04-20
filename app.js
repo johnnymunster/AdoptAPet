@@ -12,7 +12,7 @@ var express     = require("express"),
     Schema   = mongoose.Schema,
     seedDB       = require("./seeds")
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 27017;
     
 //requiring routes
 var petsRoutes = require("./routes/pets"),

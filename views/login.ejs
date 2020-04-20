@@ -1,17 +1,25 @@
 <% include ./partials/header %> 
 
-<div class="container">
-
-    <form class="form-signin" action="/login" method="POST">
-        <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" id="inputUsername" class="form-control" placeholder="Org Name or Personal Name" name="username"
-            required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="signin">Sign in</button>
-    </form>
-
-</div>
+<section class="newsletter">
+    <div class="container">
+        <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h4>Sign In</h4>
+                    <form class="form-signin" action="/login" method="POST">
+                        <label for="inputUsername" class="sr-only">Username</label>
+                        <input type="text" id="inputUsername" class="form-control" placeholder="Org Name or Personal Name" name="username"
+                        required autofocus>
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="signin">Sign in</button>
+                    </form>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <img src="https://drscdn.500px.org/photo/88557399/m%3D900/v2?sig=d470d5bc1f2f3ec8ccca15d23aa6ac62731069ce336d10566cc5ee687c5c8be8" class="img-fluid" alt="Responsive image">
+                </div>
+        </div>
+    </div>
+</section>
 
 <% include ./partials/footer %> 
 
