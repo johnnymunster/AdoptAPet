@@ -1,27 +1,43 @@
 <% include ../partials/header %> 
 
- <div class="container">
-     <header class="jumbotron">
-         <div class="container">
-             <h1>Adopt A Pet</h1>
-             <p>View out amazing pets waiting for a loving home</p>
-             <p>
+<div id="mission-statement">
+        <h1>Adopt A Pet</h1>
+        <p>Did you know Ireland is considered the Puppy Farm Capital of Europe?</p>
+        <p>Puppies raised in a cramped environment shared by many other dogs become poorly socialized to other dogs and to
+            humans.</p>
+        <p>To be exaxt in 2018, there was 11,559 dogs putting into a shelter or a pound because their 'Owner' didn't want them
+            no more.</p>
+        <p>ALL animals deserve a loving home, ALL animals deserve to be loved, ALL animals deserve to be given a chance!</p>
+        <br>
+        <p>View out amazing pets waiting for a loving home</p>
+
+        <p>Or If you're a registered Shelter or Pound add your pet</p>
+        <div class="container">
+        
+            <p>
+                <!-- if not signed in, the user will be redirected to the login page  -->
                 <a class="btn btn-primary btn-large" href="/pets/new">Add a Pet</a>
-             </p>
-         </div>
-     </header>
-     
+            </p>
+        </div>
+</div>
+<!-- end of mission statement  -->
+
+<!-- displaying of all available pets  -->
+    <div class="container">
+     <!-- sizing and display of each post  -->
      <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <!-- all embedded node.js is from the forms  -->
         <% pets.forEach(function(pet){ %>
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
                    <img src="<%= pet.image %>">
                    <div class="caption">
                        <h4><%= pet.name %></h4>
-                        <h4><%= pet.location %></h4>
+                        <h6><%= pet.location %></h6>
                    </div>
-                   <p>
-                       <a href="/pets/<%= pet._id %>" class="btn btn-primary">More Info</a>
+                   <p>  
+                       <!-- More info is available to all, no restriction either to enquiring as they have to contact the shelter first anyway -->
+                       <a href="/pets/<%= pet._id %>" class="btn">More Info</a>
                    </p>
                 </div>
             </div>

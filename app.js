@@ -5,6 +5,8 @@ var express     = require("express"),
     flash       = require("connect-flash"),
     passport    = require("passport"),
     multer      = require("multer");
+    upload      = multer({dest: './uploads/'});
+    fs          = require('fs');
     LocalStrategy = require("passport-local"),
     methodOverride = require("method-override"),
     Pet  = require("./models/pet"),
@@ -18,9 +20,12 @@ const port = process.env.PORT || 27017;
 var petsRoutes = require("./routes/pets"),
     indexRoutes      = require("./routes/index")
  
-var url = process.env.DATABASEURL || 'mongodb://localhost:27017/mydb';
-mongoose.connect(url);
+// MongoDB server 
+mongoose.connect("mongodb://localhost:27017/db", {
+    useNewUrlParser: true
+});
 
+//formatting of the code using ejs engine, note - DON'T UPDATE
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -28,7 +33,7 @@ app.use(methodOverride("_method"));
 app.use(flash());
 // seedDB(); //seeding
 
-//Passport
+//Passport - controlling of authentication, hashing of passwords.
 app.use(require("express-session")({
     secret: "pets",
     resave: false,
@@ -49,14 +54,17 @@ app.use(function(req, res, next){
    next();
 });
 
+// landing route
 app.use("/", indexRoutes);
+// pet route 
 app.use("/pets", petsRoutes);
 
+// local port - 27017
 app.listen(port, () => {
     console.log(`Server is up on port ${port}`);
 });
 
-//multer
+// multer - unable to get it functioning, tried several resources but no luck.
 
 // app.use(multer({
 //     destination: function (req, file, cb) {
@@ -65,11 +73,11 @@ app.listen(port, () => {
 //     filename: function (req, file, cb) {
 //         cb(null, file.originalname);
 //     }
-// });
+// })),
 
-// app.post(‘/api/photo’, function (req, res) {
-//     var userSchema = new Item();
+// app.post(‘/register’, function (req, res) {
+//     var newUser = new User();
 //     userSchema.profileimage.data = fs.readFileSync(req.files.userPhoto.path)
-//     userSchema.profileimage.contentType = ‘image / png’;
+//     userSchema.profileimage.contentType = ‘image / jpg’;
 //     userSchema.save();
 // });

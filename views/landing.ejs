@@ -7,25 +7,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
     </head>
     <body>
-    <!-- Will display error and success messages -->
-    <div class="container">
-        <% if(error && error.length > 0){ %>
-            <div class="alert alert-danger" role="alert">
-                <%= error %>
-            </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-            <div class="alert alert-success" role="alert">
-                <%= success %>
-            </div>s
-        <% } %>
-    </div>
+
     <!-- landing div -->
     <div id="landing">
  		<h1>Adopt A Pet</h1>
 		<a href="/pets" class="btn btn-lg btn-success">Pets are waiting for their FOREVER Home</a>
     </div>
-    <!-- li's are covered with the main.css file  -->
+    <!-- li's are covered with the main.css file for the slide show  -->
     <ul class="slideshow">
       <li></li>
       <li></li>

@@ -1,22 +1,31 @@
 <% include ../partials/header %>
 
+<!-- Show page for the pet, all the info you need to know about the pet -->
 <div id="itemsContainer">
-    <h2 align="center">Adopt Me </h2>
+    <h2>Adopt Me </h2>
 
     <div class="well col-xs-8 col-xs-offset-2">
 
-        <img class="img-responsive" src="<%= pet.image %>">
+        <img class="img-fluid" alt="Responsive image" src="<%= pet.image %>">
 
+        <h5>My Name Is...</h5>
         <h3 class="center description"><%=pet.name%></h3>
+
+        <h6>Where Am I?</h6>
 
         <p><%=pet.location%></p>
 
+        <h6>Info about Me?</h6>
+
         <p><%= pet.description %></p>
 
+        <!-- Owner of the pet -->
         <p>
             <em>Submitted By <%= pet.author.username %></em>
         </p>
-
+        <!-- Site redirects to the provide site from the user -->
+        <a class="btn btn-lg btn-success" href="<%= pet.site %>">Want to know more? Contact Us</a>
+        <!-- Only visible to post owner  -->
         <% if(currentUser && pet.author.id.equals(currentUser._id)){ %>
         <a class="btn btn-xs btn-warning" href="/pets/<%= pet._id %>/edit">Edit</a>
         <form id="delete-form" action="/pets/<%= pet._id %>?_method=DELETE" method="POST">

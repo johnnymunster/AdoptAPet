@@ -1,18 +1,16 @@
 var mongoose = require("mongoose");
 var Pet = require("./models/pet");
 
-var data = [
-    {
-        name: "", 
-        image: "",
-        description: ""
-    }
-]
+var data = [{
+    name: "",
+    image: "",
+    description: ""
+}]
 
-function seedDB(){
-   //Remove all pets
-   Pet.remove({}, function(err){
-        if(err){
+function seedDB() {
+    //Remove all pets
+    Pet.remove({}, function (err) {
+        if (err) {
             console.log(err);
         }
         console.log("remove the pet");
@@ -29,7 +27,7 @@ function seedDB(){
         //         }
         //     });
         // });
-    }); 
+    });
 
 }
 
