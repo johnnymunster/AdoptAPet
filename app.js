@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 var express     = require("express"),
     app         = express(),
     bodyParser  = require("body-parser"),
@@ -18,10 +20,13 @@ const port = process.env.PORT || 27017;
 var petsRoutes = require("./routes/pets"),
     indexRoutes      = require("./routes/index")
  
-// MongoDB server 
-mongoose.connect("mongodb://localhost:27017/db", {
-    useNewUrlParser: true
-});
+// // MongoDB server local
+// mongoose.connect("mongodb://localhost:27017/db", {
+//     useNewUrlParser: true
+// });
+
+// Production 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/db');
 
 //formatting of the code using ejs engine, note - DON'T UPDATE
 app.use(bodyParser.urlencoded({extended: true}));
@@ -57,10 +62,14 @@ app.use("/", indexRoutes);
 // pet route 
 app.use("/pets", petsRoutes);
 
-// local port - 27017
-app.listen(port, () => {
-    console.log(`Server is up on port ${port}`);
-});
+// // local port - 27017
+// app.listen(port, () => {
+//     console.log(`Server is up on port ${port}`);
+// });
+
+// Production Port 
+const port = process.env.PORT || 3000;
+app.listen(port);
 
 // multer - unable to get it functioning, tried several resources but no luck.
 const multer = require('multer');
