@@ -68,7 +68,6 @@ app.use("/pets", petsRoutes);
 // });
 
 // Production Port 
-const port = process.env.PORT || 3000;
 app.listen(port);
 
 // multer - unable to get it functioning, tried several resources but no luck.
