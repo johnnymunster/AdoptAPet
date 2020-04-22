@@ -4,8 +4,6 @@ var express     = require("express"),
     mongoose    = require("mongoose"),
     flash       = require("connect-flash"),
     passport    = require("passport"),
-    multer      = require("multer");
-    upload      = multer({dest: './uploads/'});
     fs          = require('fs');
     LocalStrategy = require("passport-local"),
     methodOverride = require("method-override"),
@@ -65,19 +63,14 @@ app.listen(port, () => {
 });
 
 // multer - unable to get it functioning, tried several resources but no luck.
+const multer = require('multer');
 
-// app.use(multer({
-//     destination: function (req, file, cb) {
-//         cb(null, './upload');
-//     },
-//     filename: function (req, file, cb) {
-//         cb(null, file.originalname);
-//     }
-// })),
+const storage = multer.diskStorage({
+destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + file.originalname);
+    }
+});
 
-// app.post(‘/register’, function (req, res) {
-//     var newUser = new User();
-//     userSchema.profileimage.data = fs.readFileSync(req.files.userPhoto.path)
-//     userSchema.profileimage.contentType = ‘image / jpg’;
-//     userSchema.save();
-// });
