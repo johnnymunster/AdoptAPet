@@ -14,7 +14,10 @@ var express     = require("express"),
     Schema   = mongoose.Schema,
     seedDB       = require("./seeds")
 
-const port = process.env.PORT || 27017;
+const port = process.env.PORT || 3000;
+
+//local DB
+// const port = process.env.PORT || 27017;
     
 //requiring routes
 var petsRoutes = require("./routes/pets"),
@@ -63,12 +66,11 @@ app.use("/", indexRoutes);
 app.use("/pets", petsRoutes);
 
 // // local port - 27017
-// app.listen(port, () => {
-//     console.log(`Server is up on port ${port}`);
-// });
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
+});
 
-// Production Port 
-app.listen(port);
+
 
 // multer - unable to get it functioning, tried several resources but no luck.
 const multer = require('multer');
