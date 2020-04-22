@@ -1,4 +1,5 @@
-require('dotenv').config()
+// PRODUCTION 
+// require('dotenv').config()
 
 var express     = require("express"),
     app         = express(),
@@ -14,22 +15,22 @@ var express     = require("express"),
     Schema   = mongoose.Schema,
     seedDB       = require("./seeds")
 
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 
-//local DB
-// const port = process.env.PORT || 27017;
+//LOCAL DB
+const port = process.env.PORT || 27017;
     
 //requiring routes
 var petsRoutes = require("./routes/pets"),
     indexRoutes      = require("./routes/index")
  
-// // MongoDB server local
+// // MongoDB server LOCAL
 // mongoose.connect("mongodb://localhost:27017/db", {
 //     useNewUrlParser: true
 // });
 
 // Production 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/db');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/db');
 
 //formatting of the code using ejs engine, note - DON'T UPDATE
 app.use(bodyParser.urlencoded({extended: true}));
